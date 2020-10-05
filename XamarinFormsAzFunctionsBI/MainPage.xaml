@@ -2,10 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:step="clr-namespace:Xamarin.Forms.StepProgressBar;assembly=Xamarin.Forms.StepProgressBar" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
              ios:NavigationPage.PrefersLargeTitles="true"
              Padding="0,60,0,0"
              x:Class="XamarinFormsAzFunctionsBI.MainPage">
-    <StackLayout>
-       <Label Text="{Binding Hello}"></Label>
-    </StackLayout>
+    <ScrollView Margin="10">
+        <StackLayout>
+             <step:StepProgressBar Margin="60,0" 
+                                                  StepColor="DarkOrange"
+                                                  Steps="2" StepSelected="{Binding Step}" 
+                                                  StepCanTouch = "false" x:Name="stepBar" IsCircle="true"/>
+
+        <StackLayout IsVisible="{Binding DadosPessoais}">
+          <Label Text="Dados Pessoais"  Margin="0,20,0,0"> </Label>
+                
+            <Entry Placeholder="E-mail" Margin="0,20,0,0" 
+                   Text="{Binding DadosPessoaisCadastro.Nome.Value}">
+                <Entry.Behaviors>
+                    <behaviorPack:EmailValidationBehavior/>
+            </Entry.Behaviors>
+            </Entry>
+
+             <Label
+            Text="{Binding  DadosPessoaisCadastro.Nome.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+             
+           <Label Text="Data de Nascimento" FontSize="Small" />
+            <DatePicker >
+                <DatePicker.Behaviors>
+                    <behaviorPack:DateValidationBehavior/>
+                    <behaviorPack:MaskedBehavior Mask="XX/XX/XXXX" />
+                </DatePicker.Behaviors>
+            </DatePicker>
+
+                   <Label
+            Text="{Binding  DadosPessoaisCadastro.DataNascimento.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+                
+            <Entry Placeholder="Estado" Keyboard="Numeric"  Text="{Binding DadosPessoaisCadastro.CPF.Value}">
+            </Entry>
+
+            <Button Style="{StaticResource saudeNessButtonStyle}" Text="Proximo" Command="{Binding ProximoCommand}"></Button>
+        </StackLayout>
+
+         <StackLayout IsVisible="{Binding DadosProfissionais}">
+            <Label Text="Formacao" Margin="0,20,0,0"> </Label>
+            <Entry Placeholder="CEP"  Margin="0,20,0,0" Text="{Binding CEP , Mode=TwoWay}" Keyboard="Numeric">
+
+            </Entry>
+            <Entry Placeholder="Area de Atuação" Text="{Binding EnderecoCadastro.Logradouro.Value}"></Entry>
+              <Label
+            Text="{Binding  EnderecoCadastro.Logradouro.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+                    
+            <Entry Placeholder="Possui Certificação? " Keyboard="Numeric" Text="{Binding EnderecoCadastro.Numero.Value}"></Entry>
+                      <Label
+            Text="{Binding  EnderecoCadastro.Numero.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+                    
+            <Entry Placeholder="Faixa Salarial" Text="{Binding EnderecoCadastro.Complemento.Value}"></Entry>
+                         <Label
+            Text="{Binding  EnderecoCadastro.Complemento.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+           
+            <Button  Style="{StaticResource saudeNessButtonStyle}" Text="Enviar Dados" Command="{Binding CadastrarCommand}"></Button>
+        </StackLayout>
+
+      </StackLayout>
+    </ScrollView>
 </ContentPage>

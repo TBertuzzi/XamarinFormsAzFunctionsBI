@@ -13,6 +13,19 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             set => SetProperty(ref _hello, value);
         }
 
+        private int _step;
+        public int Step
+        {
+            get { return _step; }
+            set
+            {
+                if (this.SetProperty(ref _step, value))
+                {
+                   // HabilitarPainel(_step);
+                }
+            }
+        }
+
         public MainViewModel(ILogger<MainViewModel> logger)
         {
            // var httpClient = httpClientFactory.CreateClient();
