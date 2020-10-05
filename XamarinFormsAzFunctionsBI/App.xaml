@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamarinFormsAzFunctionsBI.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFormsAzFunctionsBI.App">
     <Application.Resources>
+
+         <Color x:Key="ErrorColor">#ff5252</Color>
+         <Style x:Key="ValidationErrorLabelStyle"
+                   TargetType="{x:Type Label}">
+                   <Setter Property="TextColor"
+                           Value="{StaticResource ErrorColor}" />
+            </Style>
+
     </Application.Resources>
 </Application>

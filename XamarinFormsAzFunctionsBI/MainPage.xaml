@@ -2,10 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:step="clr-namespace:Xamarin.Forms.StepProgressBar;assembly=Xamarin.Forms.StepProgressBar" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             xmlns:step="clr-namespace:Xamarin.Forms.StepProgressBar;assembly=Xamarin.Forms.StepProgressBar" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:c="clr-namespace:XamarinFormsAzFunctionsBI.Converters"
              ios:NavigationPage.PrefersLargeTitles="true"
              Padding="0,60,0,0"
              x:Class="XamarinFormsAzFunctionsBI.MainPage">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView Margin="10">
         <StackLayout>
              <step:StepProgressBar Margin="60,0" 
@@ -42,12 +49,12 @@
             <Entry Placeholder="Estado" Keyboard="Numeric"  Text="{Binding DadosPessoaisCadastro.CPF.Value}">
             </Entry>
 
-            <Button Style="{StaticResource saudeNessButtonStyle}" Text="Proximo" Command="{Binding ProximoCommand}"></Button>
+            <Button Style="{StaticResource appButtonStyle}" Text="Proximo" Command="{Binding ProximoCommand}"></Button>
         </StackLayout>
 
          <StackLayout IsVisible="{Binding DadosProfissionais}">
-            <Label Text="Formacao" Margin="0,20,0,0"> </Label>
-            <Entry Placeholder="CEP"  Margin="0,20,0,0" Text="{Binding CEP , Mode=TwoWay}" Keyboard="Numeric">
+
+            <Entry Placeholder="Formacao"  Margin="0,20,0,0" Text="{Binding CEP , Mode=TwoWay}" Keyboard="Numeric">
 
             </Entry>
             <Entry Placeholder="Area de Atuação" Text="{Binding EnderecoCadastro.Logradouro.Value}"></Entry>
@@ -65,7 +72,7 @@
             Text="{Binding  EnderecoCadastro.Complemento.Errors, Converter={StaticResource FirstValidationErrorConverter}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
            
-            <Button  Style="{StaticResource saudeNessButtonStyle}" Text="Enviar Dados" Command="{Binding CadastrarCommand}"></Button>
+            <Button  Style="{StaticResource appButtonStyle}" Text="Enviar Dados" Command="{Binding CadastrarCommand}"></Button>
         </StackLayout>
 
       </StackLayout>
