@@ -33,5 +33,7 @@
     <Folder Include="ViewModels\Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Converters\" />
+    <Folder Include="Validations\" />
+    <Folder Include="Validations\Rules\" />
   </ItemGroup>
 </Project>

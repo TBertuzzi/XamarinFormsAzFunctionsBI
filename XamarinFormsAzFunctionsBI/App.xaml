@@ -9,7 +9,13 @@
                    TargetType="{x:Type Label}">
                    <Setter Property="TextColor"
                            Value="{StaticResource ErrorColor}" />
-            </Style>
+         </Style>
+
+         <Style x:Key="appButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="BackgroundColor" Value="#E06F23" />
+                <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
 
     </Application.Resources>
 </Application>
