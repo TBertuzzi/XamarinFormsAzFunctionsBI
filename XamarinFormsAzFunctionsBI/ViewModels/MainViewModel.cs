@@ -37,11 +37,18 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             set { SetProperty(ref _dadosProfissionais, value); }
         }
 
-        private Pessoa _pessoa;
-        public Pessoa Pessoa
+        private DadosPessoais _pessoa;
+        public DadosPessoais Pessoa
         {
             get { return _pessoa; }
             set { SetProperty(ref _pessoa, value); }
+        }
+
+        private DadosProfissionais _profissional;
+        public DadosProfissionais Profissional
+        {
+            get { return _profissional; }
+            set { SetProperty(ref _profissional, value); }
         }
 
         private ICommand proximoCommand;
@@ -55,16 +62,35 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             DadosPessoais = true;
             // var httpClient = httpClientFactory.CreateClient();
             logger.LogCritical("Acessando o Aplicativo");
+            Pessoa = new DadosPessoais(true);
+            Profissional = new DadosProfissionais(true);
         }
 
         private async Task ProximoCommandExecute()
         {
-       
+            if (!ValidateNavigation(Step))
+                return;
+
+            if (Step < 2)
+            {
+                Step++;
+            }
         }
 
         private async Task CadastrarCommandExecute()
         {
             
+        }
+
+        private bool ValidateNavigation(int step)
+        {
+
+            switch (step)
+            {
+                case 1: return Pessoa.Validate();
+                case 2: return Profissional.Validate(); 
+                default: return true;
+            }
         }
 
         private void HabilitarPainel(int step)

@@ -60,16 +60,16 @@
               <Label Text="Dados Profissionais"  Margin="0,20,0,0"> </Label>
 
                <Entry Placeholder="Fomação" Margin="0,20,0,0" 
-                   Text="{Binding Pessoa.Formacao.Value}">
+                   Text="{Binding Profissional.Formacao.Value}">
             </Entry>
 
                <Label
-            Text="{Binding  Pessoa.Formacao.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+            Text="{Binding  Profissional.Formacao.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
 
             <Entry Placeholder="Area de Atuação" Text="{Binding Pessoa.AreaAtuacao.Value}"></Entry>
               <Label
-            Text="{Binding  Pessoa.AreaAtuacao.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+            Text="{Binding  Profissional.AreaAtuacao.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
                     
             <!--<Entry Placeholder="Possui Certificação? " Keyboard="Numeric" Text="{Binding Pessoa.Numero.Value}"></Entry>
@@ -81,7 +81,7 @@
 
             </Entry>
                          <Label
-            Text="{Binding  Pessoa.FaixaSalarial.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+            Text="{Binding  Profissional.FaixaSalarial.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
            
             <Button  Style="{StaticResource appButtonStyle}" Text="Enviar Dados" Command="{Binding CadastrarCommand}"></Button>
