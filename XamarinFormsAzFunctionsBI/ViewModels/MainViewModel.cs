@@ -4,8 +4,15 @@ using XamarinFormsAzFunctionsBI.ViewModels.Interfaces;
 
 namespace XamarinFormsAzFunctionsBI.ViewModels
 {
-    public class MainViewModel : IMainViewModel
+    public class MainViewModel : ViewModelBase ,IMainViewModel
     {
+        private string _hello;
+        public string Hello
+        {
+            get => _hello;
+            set => SetProperty(ref _hello, value);
+        }
+
         public MainViewModel(ILogger<MainViewModel> logger)
         {
            // var httpClient = httpClientFactory.CreateClient();
@@ -13,6 +20,5 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             Hello = "Hello from IoC";
         }
 
-        public string Hello { get; set; }
     }
 }
