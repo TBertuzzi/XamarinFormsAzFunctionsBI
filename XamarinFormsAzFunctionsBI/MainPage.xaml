@@ -24,52 +24,64 @@
           <Label Text="Dados Pessoais"  Margin="0,20,0,0"> </Label>
                 
             <Entry Placeholder="E-mail" Margin="0,20,0,0" 
-                   Text="{Binding DadosPessoaisCadastro.Nome.Value}">
+                   Text="{Binding Pessoa.Email.Value}">
                 <Entry.Behaviors>
                     <behaviorPack:EmailValidationBehavior/>
             </Entry.Behaviors>
             </Entry>
 
              <Label
-            Text="{Binding  DadosPessoaisCadastro.Nome.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+            Text="{Binding  Pessoa.Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
-             
-           <Label Text="Data de Nascimento" FontSize="Small" />
-            <DatePicker >
-                <DatePicker.Behaviors>
-                    <behaviorPack:DateValidationBehavior/>
-                    <behaviorPack:MaskedBehavior Mask="XX/XX/XXXX" />
-                </DatePicker.Behaviors>
-            </DatePicker>
 
-                   <Label
-            Text="{Binding  DadosPessoaisCadastro.DataNascimento.Errors, Converter={StaticResource FirstValidationErrorConverter}"
-                    Style="{StaticResource ValidationErrorLabelStyle}" />
-                
-            <Entry Placeholder="Estado" Keyboard="Numeric"  Text="{Binding DadosPessoaisCadastro.CPF.Value}">
+             <Entry Placeholder="Data de Nascimento"
+                   Text="{Binding Pessoa.DataNascimento.Value}">
+                <Entry.Behaviors>
+                    <behaviorPack:EmailValidationBehavior/>
+            </Entry.Behaviors>
             </Entry>
+
+             <Label
+            Text="{Binding  Pessoa.DataNascimento.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+
+             <Entry Placeholder="Estado" 
+                   Text="{Binding Pessoa.Estado.Value}">
+            </Entry>
+
+             <Label
+            Text="{Binding  Pessoa.Estado.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
 
             <Button Style="{StaticResource appButtonStyle}" Text="Proximo" Command="{Binding ProximoCommand}"></Button>
         </StackLayout>
 
          <StackLayout IsVisible="{Binding DadosProfissionais}">
+              <Label Text="Dados Profissionais"  Margin="0,20,0,0"> </Label>
 
-            <Entry Placeholder="Formacao"  Margin="0,20,0,0" Text="{Binding CEP , Mode=TwoWay}" Keyboard="Numeric">
+               <Entry Placeholder="Fomação" Margin="0,20,0,0" 
+                   Text="{Binding Pessoa.Formacao.Value}">
+            </Entry>
+
+               <Label
+            Text="{Binding  Pessoa.Formacao.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry Placeholder="Area de Atuação" Text="{Binding Pessoa.AreaAtuacao.Value}"></Entry>
+              <Label
+            Text="{Binding  Pessoa.AreaAtuacao.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+                    
+            <!--<Entry Placeholder="Possui Certificação? " Keyboard="Numeric" Text="{Binding Pessoa.Numero.Value}"></Entry>
+                      <Label
+            Text="{Binding  Pessoa.Numero.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />-->
+                    
+            <Entry Placeholder="Faixa Salarial" Text="{Binding Pessoa.FaixaSalarial.Value}">
 
             </Entry>
-            <Entry Placeholder="Area de Atuação" Text="{Binding EnderecoCadastro.Logradouro.Value}"></Entry>
-              <Label
-            Text="{Binding  EnderecoCadastro.Logradouro.Errors, Converter={StaticResource FirstValidationErrorConverter}"
-                    Style="{StaticResource ValidationErrorLabelStyle}" />
-                    
-            <Entry Placeholder="Possui Certificação? " Keyboard="Numeric" Text="{Binding EnderecoCadastro.Numero.Value}"></Entry>
-                      <Label
-            Text="{Binding  EnderecoCadastro.Numero.Errors, Converter={StaticResource FirstValidationErrorConverter}"
-                    Style="{StaticResource ValidationErrorLabelStyle}" />
-                    
-            <Entry Placeholder="Faixa Salarial" Text="{Binding EnderecoCadastro.Complemento.Value}"></Entry>
                          <Label
-            Text="{Binding  EnderecoCadastro.Complemento.Errors, Converter={StaticResource FirstValidationErrorConverter}"
+            Text="{Binding  Pessoa.FaixaSalarial.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
            
             <Button  Style="{StaticResource appButtonStyle}" Text="Enviar Dados" Command="{Binding CadastrarCommand}"></Button>
