@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using Xamarin.Essentials;
 using XamarinFormsAzFunctionsBI.Helpers;
+using XamarinFormsAzFunctionsBI.Services;
 using XamarinFormsAzFunctionsBI.ViewModels;
 using XamarinFormsAzFunctionsBI.ViewModels.Interfaces;
 
@@ -44,14 +45,17 @@ namespace XamarinFormsAzFunctionsBI
 
         static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)
         {
-            if (ctx.HostingEnvironment.IsDevelopment())
-            {
-                var Api = ctx.Configuration["ApiUrl"];
-            }
+            //if (ctx.HostingEnvironment.IsDevelopment())
+            //{
+               
+            //}
 
-           // services.AddHttpClient();
+            Infra.ApiURL = ctx.Configuration["ApiUrl"];
+
+            // services.AddHttpClient();
             services.AddTransient<IMainViewModel, MainViewModel>();
             services.AddTransient<MainPage>();
+            services.AddSingleton<IDadosCadastraisService, DadosCadastraisService>();
             services.AddSingleton<App>();
         }
     }

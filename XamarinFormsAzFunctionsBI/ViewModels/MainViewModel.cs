@@ -4,12 +4,16 @@ using System.Windows.Input;
 using Microsoft.Extensions.Logging;
 using Xamarin.Forms;
 using XamarinFormsAzFunctionsBI.Models;
+using XamarinFormsAzFunctionsBI.Services;
 using XamarinFormsAzFunctionsBI.ViewModels.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace XamarinFormsAzFunctionsBI.ViewModels
 {
     public class MainViewModel : ViewModelBase ,IMainViewModel
     {
+        private IDadosCadastraisService _aprovacaoService;
+
         private int _step;
         public int Step
         {
@@ -60,7 +64,7 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
         public MainViewModel(ILogger<MainViewModel> logger)
         {
             DadosPessoais = true;
-            // var httpClient = httpClientFactory.CreateClient();
+            _aprovacaoService = App.ServiceProvider.GetService<IDadosCadastraisService>();
             logger.LogCritical("Acessando o Aplicativo");
             Pessoa = new DadosPessoais(true);
             Profissional = new DadosProfissionais(true);
@@ -83,6 +87,9 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
         {
             if (!ValidateNavigation(Step))
                 return;
+
+
+
         }
 
         private bool ValidateNavigation(int step)
