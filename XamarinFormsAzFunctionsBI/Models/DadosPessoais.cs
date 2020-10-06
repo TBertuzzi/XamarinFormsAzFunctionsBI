@@ -7,6 +7,13 @@ namespace XamarinFormsAzFunctionsBI.Models
 {
     public class DadosPessoais : ObservableObject
     {
+        private ValidatableObject<string> _nome;
+        public ValidatableObject<string> Nome
+        {
+            get => _nome;
+            set => SetProperty(ref _nome, value);
+        }
+
         private ValidatableObject<string> _email;
         public ValidatableObject<string> Email
         {
@@ -40,18 +47,21 @@ namespace XamarinFormsAzFunctionsBI.Models
 
         public bool Validate()
         {
+            var nome = _nome.Validate();
             var email = _email.Validate();
             var dataNascimento = _dataNascimento.Validate();
             var estado = _estado.Validate();
 
 
-            return email
+            return nome &&
+                email
                 && dataNascimento
                 && estado;
         }
 
         private void Init()
         {
+            _nome = new ValidatableObject<string>();
             _email = new ValidatableObject<string>();
             _dataNascimento = new ValidatableObject<string>();
             _estado = new ValidatableObject<string>();
@@ -59,6 +69,11 @@ namespace XamarinFormsAzFunctionsBI.Models
 
         private void InitValidate()
         {
+            _nome.Validations.Add(new IsNotNullOrEmptyRule<string>
+            {
+                ValidationMessage = "O Nome é obrigatório."
+            });
+
             _email.Validations.Add(new IsNotNullOrEmptyRule<string>
             {
                 ValidationMessage = "E-mail é obrigatório."

@@ -22,8 +22,17 @@
 
         <StackLayout IsVisible="{Binding DadosPessoais}">
           <Label Text="Dados Pessoais"  Margin="0,20,0,0"> </Label>
-                
-            <Entry Placeholder="E-mail" Margin="0,20,0,0" 
+
+                 
+            <Entry Placeholder="Nome" Margin="0,20,0,0" 
+                   Text="{Binding Pessoa.Nome.Value}">
+            </Entry>
+
+              <Label
+            Text="{Binding  Pessoa.Nome.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry Placeholder="E-mail" 
                    Text="{Binding Pessoa.Email.Value}">
                 <Entry.Behaviors>
                     <behaviorPack:EmailValidationBehavior/>
@@ -37,7 +46,7 @@
              <Entry Placeholder="Data de Nascimento"
                    Text="{Binding Pessoa.DataNascimento.Value}">
                 <Entry.Behaviors>
-                    <behaviorPack:EmailValidationBehavior/>
+                   <behaviorPack:MaskedBehavior Mask="XX/XX/XXXX" />
             </Entry.Behaviors>
             </Entry>
 

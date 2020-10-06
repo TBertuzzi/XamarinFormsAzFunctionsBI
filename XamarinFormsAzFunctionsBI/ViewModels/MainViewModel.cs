@@ -64,6 +64,8 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             logger.LogCritical("Acessando o Aplicativo");
             Pessoa = new DadosPessoais(true);
             Profissional = new DadosProfissionais(true);
+
+            Step = 1;
         }
 
         private async Task ProximoCommandExecute()
@@ -79,7 +81,8 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
 
         private async Task CadastrarCommandExecute()
         {
-            
+            if (!ValidateNavigation(Step))
+                return;
         }
 
         private bool ValidateNavigation(int step)
