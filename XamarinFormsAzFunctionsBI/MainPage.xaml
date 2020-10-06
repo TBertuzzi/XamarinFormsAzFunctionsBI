@@ -5,11 +5,13 @@
              xmlns:step="clr-namespace:Xamarin.Forms.StepProgressBar;assembly=Xamarin.Forms.StepProgressBar" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:c="clr-namespace:XamarinFormsAzFunctionsBI.Converters"
              ios:NavigationPage.PrefersLargeTitles="true"
              Padding="0,60,0,0"
-             x:Class="XamarinFormsAzFunctionsBI.MainPage">
+             x:Class="XamarinFormsAzFunctionsBI.MainPage"
+             xmlns:converterPack="clr-namespace:Xamarin.Forms.ConvertersPack;assembly=Xamarin.Forms.ConvertersPack">
 
      <ContentPage.Resources>
         <ResourceDictionary>
             <c:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <converterPack:CurrencyConverter x:Key="CurrencyConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -136,7 +138,8 @@
              <Label Text="Possui Certificação?"></Label>
             <CheckBox x:Name="cbCertificacao" IsChecked="{Binding Profissional.PossuiCertificacao.Value}" ></CheckBox>
 
-            <Entry Placeholder="Faixa Salarial" Text="{Binding Pessoa.FaixaSalarial.Value}">
+            <Entry Keyboard="Numeric"
+                   Text="{Binding Profissional.FaixaSalarial.Value, Converter={StaticResource CurrencyConverter}}" Placeholder="Faixa Salarial" >
 
             </Entry>
                          <Label

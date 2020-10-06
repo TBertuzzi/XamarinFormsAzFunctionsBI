@@ -20,8 +20,8 @@ namespace XamarinFormsAzFunctionsBI.Models
             set => SetProperty(ref _areaAtuacao, value);
         }
 
-        private ValidatableObject<string> _faixaSalarial;
-        public ValidatableObject<string> FaixaSalarial
+        private ValidatableObject<decimal> _faixaSalarial;
+        public ValidatableObject<decimal> FaixaSalarial
         {
             get => _faixaSalarial;
             set => SetProperty(ref _faixaSalarial, value);
@@ -62,7 +62,7 @@ namespace XamarinFormsAzFunctionsBI.Models
         {
             _formacao = new ValidatableObject<string>();
             _areaAtuacao = new ValidatableObject<string>();
-            _faixaSalarial = new ValidatableObject<string>();
+            _faixaSalarial = new ValidatableObject<decimal>();
             _possuiCertificacao = new ValidatableObject<bool>();
         }
 
@@ -79,10 +79,10 @@ namespace XamarinFormsAzFunctionsBI.Models
                 ValidationMessage = "A Area de Atuação é obrigatória."
             });
 
-            _faixaSalarial.Validations.Add(new IsNotNullOrEmptyRule<string>
-            {
-                ValidationMessage = "A faixa salarial é obrigatória."
-            });
+            //_faixaSalarial.Validations.Add(new IsNotNullOrEmptyRule<string>
+            //{
+            //    ValidationMessage = "A faixa salarial é obrigatória."
+            //});
         }
     }
 }
