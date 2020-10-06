@@ -8,6 +8,7 @@ using XamarinFormsAzFunctionsBI.Services;
 using XamarinFormsAzFunctionsBI.ViewModels.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using XamarinFormsAzFunctionsBI.Services.DTO;
+using Acr.UserDialogs;
 
 namespace XamarinFormsAzFunctionsBI.ViewModels
 {
@@ -104,32 +105,36 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
                   
                 };
 
-                var retorno = await _aprovacaoService.Cadastrar(cadastro);
-
-                if(retorno.StatusCode == System.Net.HttpStatusCode.OK)
+                using (var dialog = UserDialogs.Instance.Loading("Cadastrando", null, null, true, MaskType.Black))
                 {
-                    if (retorno.Value.Sucesso)
+                    var retorno = await _aprovacaoService.Cadastrar(cadastro);
+
+
+                    if (retorno.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Sucesso", "Cadastro Incluido com Sucesso", "OK");
-                        Step = 1;
-                        Pessoa = new DadosPessoais(true);
-                        Profissional = new DadosProfissionais(true);
+                        if (retorno.Value.Sucesso)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Sucesso", "Cadastro Incluido com Sucesso", "OK");
+                            Step = 1;
+                            Pessoa = new DadosPessoais(true);
+                            Profissional = new DadosProfissionais(true);
+                        }
+                        else
+                        {
+                            string inconsistencias = string.Empty;
+
+                            for (int i = 0; i < retorno.Value.Inconsistencias.Length; i++)
+                            {
+                                inconsistencias = inconsistencias + "," + retorno.Value.Inconsistencias[i];
+                            }
+
+                            await Application.Current.MainPage.DisplayAlert("Atenção", $"{inconsistencias}", "OK");
+                        }
                     }
                     else
                     {
-                        string inconsistencias = string.Empty;
-
-                        for (int i = 0; i < retorno.Value.Inconsistencias.Length; i++)
-                        {
-                            inconsistencias = inconsistencias + "," + retorno.Value.Inconsistencias[i];
-                        }
-
-                        await Application.Current.MainPage.DisplayAlert("Atenção", $"{inconsistencias}", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Erro", $"Ocorreu um erro ao cadastrar{retorno.Error}", "OK");
                     }
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Erro", $"Ocorreu um erro ao cadastrar{retorno.Error}" , "OK");
                 }
             }
             catch (Exception ex)

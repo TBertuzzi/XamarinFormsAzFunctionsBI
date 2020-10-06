@@ -22,6 +22,7 @@
     <PackageReference Include="Xamarin.Forms.BehaviorValidationPack" Version="1.1.1" />
     <PackageReference Include="Xamarin.Forms.ConvertersPack" Version="1.0.0" />
     <PackageReference Include="HttpExtension" Version="2.1.0" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.454" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
