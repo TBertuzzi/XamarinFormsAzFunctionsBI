@@ -20,6 +20,8 @@
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="Xamarin.Forms.StepProgressBar" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms.BehaviorValidationPack" Version="1.1.1" />
+    <PackageReference Include="Xamarin.Forms.ConvertersPack" Version="1.0.0" />
+    <PackageReference Include="HttpExtension" Version="2.1.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
@@ -35,5 +37,7 @@
     <Folder Include="Converters\" />
     <Folder Include="Validations\" />
     <Folder Include="Validations\Rules\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\DTO\" />
   </ItemGroup>
 </Project>
