@@ -9,6 +9,6 @@ namespace XamarinFormsAzFunctionsBI.Services
     public interface IDadosCadastraisService
     {
         Task<Response<IEnumerable<CadastroDto>>> ListarDadosCadastrais();
-        Task<Response<RetornoDto>> Cadastrar(CadastroDto cadastro);
+        Task<HttpExtensionResponse<RetornoDto>> Cadastrar(CadastroDto cadastro);
     }
 }

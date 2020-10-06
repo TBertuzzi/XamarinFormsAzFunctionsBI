@@ -22,14 +22,14 @@ namespace XamarinFormsAzFunctionsBI.Services
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<Response<RetornoDto>> Cadastrar(CadastroDto cadastro)
+        public async Task<HttpExtensionResponse<RetornoDto>> Cadastrar(CadastroDto cadastro)
         {
             try
             {
                 var resultJson = await _httpClient.
-                    PostAsync<Response<RetornoDto>>($"DadosCadastrais?code=quIxkhmhhEsex5Uhyab4QiQyvj5NfaOSKRwaGJWP4dRL5mU0M00mRw==", cadastro);
+                    PostAsync<RetornoDto>($"DadosCadastrais?code=quIxkhmhhEsex5Uhyab4QiQyvj5NfaOSKRwaGJWP4dRL5mU0M00mRw==", cadastro);
 
-                return resultJson.Value;
+                return resultJson;
             }
             catch (Exception ex)
             {

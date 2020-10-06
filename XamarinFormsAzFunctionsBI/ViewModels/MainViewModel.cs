@@ -7,6 +7,7 @@ using XamarinFormsAzFunctionsBI.Models;
 using XamarinFormsAzFunctionsBI.Services;
 using XamarinFormsAzFunctionsBI.ViewModels.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using XamarinFormsAzFunctionsBI.Services.DTO;
 
 namespace XamarinFormsAzFunctionsBI.ViewModels
 {
@@ -85,10 +86,56 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
 
         private async Task CadastrarCommandExecute()
         {
-            if (!ValidateNavigation(Step))
-                return;
+            try
+            {
+                if (!ValidateNavigation(Step))
+                    return;
 
+                var cadastro = new CadastroDto
+                {
+                    AreaAtuacao = Profissional.AreaAtuacao.Value,
+                    CodEstado = Pessoa.Estado.Value,
+                    DataNascimento = Convert.ToDateTime(Pessoa.DataNascimento.Value).ToString("yyyy-MM-dd"),
+                    Email = Pessoa.Email.Value,
+                    FlCertificacao = Profissional.PossuiCertificacao.Value,
+                    Formacao = Profissional.Formacao.Value,
+                    Nome = Pessoa.Nome.Value,
+                    Salario = Convert.ToDouble(Profissional.FaixaSalarial.Value)
+                  
+                };
 
+                var retorno = await _aprovacaoService.Cadastrar(cadastro);
+
+                if(retorno.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (retorno.Value.Sucesso)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Sucesso", "Cadastro Incluido com Sucesso", "OK");
+                        Step = 1;
+                        Pessoa = new DadosPessoais(true);
+                        Profissional = new DadosProfissionais(true);
+                    }
+                    else
+                    {
+                        string inconsistencias = string.Empty;
+
+                        for (int i = 0; i < retorno.Value.Inconsistencias.Length; i++)
+                        {
+                            inconsistencias = inconsistencias + "," + retorno.Value.Inconsistencias[i];
+                        }
+
+                        await Application.Current.MainPage.DisplayAlert("Atenção", $"{inconsistencias}", "OK");
+                    }
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Erro", $"Ocorreu um erro ao cadastrar{retorno.Error}" , "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Erro", $"Ocorreu um erro ao cadastrar{ex.Message}", "OK");
+            }
 
         }
 

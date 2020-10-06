@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace XamarinFormsAzFunctionsBI.Services.DTO
 {
-    public partial class RetornoDto
+    public class RetornoDto
     {
         [JsonProperty("acao")]
         public string Acao { get; set; }

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace XamarinFormsAzFunctionsBI.Services.DTO
 {
-    public partial class CadastroDto
+    public class CadastroDto
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -18,7 +18,7 @@ namespace XamarinFormsAzFunctionsBI.Services.DTO
         public double Salario { get; set; }
 
         [JsonProperty("DataNascimento")]
-        public DateTimeOffset DataNascimento { get; set; }
+        public string DataNascimento { get; set; }
 
         [JsonProperty("FlCertificacao")]
         public bool FlCertificacao { get; set; }
