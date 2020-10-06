@@ -17,6 +17,7 @@ namespace XamarinFormsAzFunctionsBI.Services
         {
             try
             {
+                return null;
             }
             catch (Exception ex)
             {
@@ -28,6 +29,7 @@ namespace XamarinFormsAzFunctionsBI.Services
         {
             try
             {
+                return null;
             }
             catch (Exception ex)
             {
