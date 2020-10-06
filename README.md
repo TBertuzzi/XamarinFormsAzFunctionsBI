@@ -7,5 +7,7 @@ Controles e Plugins Utilizados :
 
 |ControlePLugin |Como Utilizar|
 | ------------------- | :------------------: |
+|Xamarin.Forms.BehaviorValidationPack |[Github](https://github.com/TBertuzzi/Xamarin.Forms.BehaviorValidationPack)|
+|Xamarin.Forms.ConvertersPack|[Github](https://github.com/TBertuzzi/Xamarin.Forms.ConvertersPack)|
 |Xamarin.Forms.StepProgressBar|[Github](https://github.com/TBertuzzi/Xamarin.Forms.StepProgressBar)|
 |Microsoft Extensions|[Github](https://github.com/dotnet/extensions)|
