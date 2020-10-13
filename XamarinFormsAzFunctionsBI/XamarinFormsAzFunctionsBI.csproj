@@ -23,6 +23,10 @@
     <PackageReference Include="Xamarin.Forms.ConvertersPack" Version="1.0.0" />
     <PackageReference Include="HttpExtension" Version="2.1.0" />
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.454" />
+    <PackageReference Include="Microsoft.AppCenter" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.4.3" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
