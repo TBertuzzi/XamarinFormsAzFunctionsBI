@@ -45,7 +45,7 @@
             Text="{Binding  Pessoa.Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                     Style="{StaticResource ValidationErrorLabelStyle}" />
 
-             <Entry Placeholder="Data de Nascimento"
+             <Entry Placeholder="Data de Nascimento" Keyboard="Numeric"
                    Text="{Binding Pessoa.DataNascimento.Value}">
                 <Entry.Behaviors>
                    <behaviorPack:MaskedBehavior Mask="XX/XX/XXXX" />
@@ -138,7 +138,7 @@
              <Label Text="Possui Certificação?"></Label>
             <CheckBox x:Name="cbCertificacao" IsChecked="{Binding Profissional.PossuiCertificacao.Value}" ></CheckBox>
 
-            <Entry Keyboard="Numeric"
+            <Entry Keyboard="Numeric" MaxLength="12"
                    Text="{Binding Profissional.FaixaSalarial.Value, Converter={StaticResource CurrencyConverter}}" Placeholder="Faixa Salarial" >
 
             </Entry>

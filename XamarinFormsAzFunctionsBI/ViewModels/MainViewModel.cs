@@ -102,21 +102,22 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
                 if (!ValidateNavigation(Step))
                     return;
 
-                var cadastro = new CadastroDto
-                {
-                    AreaAtuacao = Profissional.AreaAtuacao.Value,
-                    CodEstado = Pessoa.Estado.Value,
-                    DataNascimento = Convert.ToDateTime(Pessoa.DataNascimento.Value).ToString("yyyy-MM-dd"),
-                    Email = Pessoa.Email.Value,
-                    FlCertificacao = Profissional.PossuiCertificacao.Value,
-                    Formacao = Profissional.Formacao.Value,
-                    Nome = Pessoa.Nome.Value,
-                    Salario = Convert.ToDouble(Profissional.FaixaSalarial.Value)
-                  
-                };
-
                 using (var dialog = UserDialogs.Instance.Loading("Cadastrando", null, null, true, MaskType.Black))
                 {
+                    var cadastro = new CadastroDto
+                    {
+                        AreaAtuacao = Profissional.AreaAtuacao.Value,
+                        CodEstado = Pessoa.Estado.Value,
+                        DataNascimento = Convert.ToDateTime(Pessoa.DataNascimento.Value).ToString("yyyy-MM-dd"),
+                        Email = Pessoa.Email.Value,
+                        FlCertificacao = Profissional.PossuiCertificacao.Value,
+                        Formacao = Profissional.Formacao.Value,
+                        Nome = Pessoa.Nome.Value,
+                        Salario = Convert.ToDouble(Profissional.FaixaSalarial.Value)
+
+                    };
+
+
                     var retorno = await _aprovacaoService.Cadastrar(cadastro);
 
 
