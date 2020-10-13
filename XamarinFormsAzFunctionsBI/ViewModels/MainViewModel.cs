@@ -63,6 +63,11 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
         private ICommand cadastrarCommand;
         public ICommand CadastrarCommand => cadastrarCommand ?? (cadastrarCommand = new Command(async () => await CadastrarCommandExecute()));
 
+        private ICommand voltarCommand;
+        public ICommand VoltarCommand => voltarCommand ?? (voltarCommand = new Command(async () => await VoltarCommandExecute()));
+
+      
+
         public MainViewModel(ILogger<MainViewModel> logger)
         {
             DadosPessoais = true;
@@ -71,6 +76,11 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             Pessoa = new DadosPessoais(true);
             Profissional = new DadosProfissionais(true);
 
+            Step = 1;
+        }
+
+        private async Task VoltarCommandExecute()
+        {
             Step = 1;
         }
 

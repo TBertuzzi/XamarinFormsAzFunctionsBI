@@ -147,6 +147,7 @@
                     Style="{StaticResource ValidationErrorLabelStyle}" />
            
             <Button  Style="{StaticResource appButtonStyle}" Text="Enviar Dados" Command="{Binding CadastrarCommand}"></Button>
+            <Button  Style="{StaticResource appButtonStyle}" Text="Voltar" Command="{Binding VoltarCommand}"></Button>
         </StackLayout>
 
       </StackLayout>
