@@ -88,10 +88,17 @@ namespace XamarinFormsAzFunctionsBI.Models
                 ValidationMessage = "O Estado é obrigatório."
             });
 
+
             _dataNascimento.Validations.Add(new IsNotNullOrEmptyRule<string>
             {
                 ValidationMessage = "A Data de Nascimento é obrigatória."
             });
+
+            _dataNascimento.Validations.Add(new DateRule<string>
+            {
+                ValidationMessage = "Data de Nascimento Invalida."
+            });
+
 
         }
     }

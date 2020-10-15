@@ -89,21 +89,7 @@ namespace XamarinFormsAzFunctionsBI.ViewModels
             if (!ValidateNavigation(Step))
                 return;
 
-            DateTime data;
-            if (DateTime.TryParse(Pessoa.DataNascimento.Value, out data))
-            {
-                if (data < DateTime.MinValue)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Atenção", "Data de Nascimento invalida", "OK");
-                    return;
-                }
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Atenção", "Data de Nascimento invalida", "OK");
-                return;
-            }
-
+ 
             if (Step < 2)
             {
                 Step++;

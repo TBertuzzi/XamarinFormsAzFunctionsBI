@@ -14,7 +14,17 @@ namespace XamarinFormsAzFunctionsBI.Validations.Rules
 
             var str = value as string;
             DateTime dateTime;
-            return DateTime.TryParse(str, out dateTime);
+
+            var dataMinima = new DateTime(1940, 01, 01);
+            if (DateTime.TryParse(str, out dateTime))
+            {
+                if (dateTime < dataMinima)
+                    return false;
+            }
+            else
+                return false;
+
+            return true;
         }
     }
 }
