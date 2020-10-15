@@ -138,6 +138,7 @@
              <Label Text="Possui Certificação?"></Label>
             <CheckBox x:Name="cbCertificacao" IsChecked="{Binding Profissional.PossuiCertificacao.Value}" ></CheckBox>
 
+               <Label Text="Faixa Salarial"></Label>
             <Entry Keyboard="Numeric" MaxLength="12"
                    Text="{Binding Profissional.FaixaSalarial.Value, Converter={StaticResource CurrencyConverter}}" Placeholder="Faixa Salarial" >
 
