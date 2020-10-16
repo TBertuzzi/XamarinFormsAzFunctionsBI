@@ -20,7 +20,6 @@ namespace XamarinFormsAzFunctionsBI
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //App.ServiceProvider.GetService<INativeCalls>().OpenToast("Hello fro DI");
         }
     }
 }

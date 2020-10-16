@@ -45,14 +45,13 @@ namespace XamarinFormsAzFunctionsBI
 
         static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)
         {
-            //if (ctx.HostingEnvironment.IsDevelopment())
-            //{
-               
-            //}
+            if (ctx.HostingEnvironment.IsDevelopment())
+            {
+
+            }
 
             Infra.ApiURL = ctx.Configuration["ApiUrl"];
 
-            // services.AddHttpClient();
             services.AddTransient<IMainViewModel, MainViewModel>();
             services.AddTransient<MainPage>();
             services.AddSingleton<IDadosCadastraisService, DadosCadastraisService>();

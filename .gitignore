@@ -351,3 +351,12 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/contentModel.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/encodings.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/indexLayout.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/misc.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/modules.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/projectSettingsUpdater.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/.idea/vcs.xml
+.idea/.idea.XamarinFormsAzFunctionsBI/riderModule.iml
+.idea/.idea.XamarinFormsAzFunctionsBI/XamarinFormsAzFunctionsBI.Android.iml

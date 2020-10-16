@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:step="clr-namespace:Xamarin.Forms.StepProgressBar;assembly=Xamarin.Forms.StepProgressBar" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:c="clr-namespace:XamarinFormsAzFunctionsBI.Converters"
+             xmlns:step="clr-namespace:Xamarin.Forms.StepProgressBar;assembly=Xamarin.Forms.StepProgressBar"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:c="clr-namespace:XamarinFormsAzFunctionsBI.Converters"
              ios:NavigationPage.PrefersLargeTitles="true"
              Padding="0,60,0,0"
              x:Class="XamarinFormsAzFunctionsBI.MainPage"
@@ -23,7 +24,10 @@
                                                   StepCanTouch = "false" x:Name="stepBar" IsCircle="true"/>
 
         <StackLayout IsVisible="{Binding DadosPessoais}">
-          <Label Text="Dados Pessoais"  Margin="0,20,0,0"> </Label>
+
+             <Label Text="Xamarin AZFunction BI"  Margin="0,20,0,0"> </Label>
+
+          <Label Text="Dados Pessoais"  > </Label>
 
                  
             <Entry Placeholder="Nome" Margin="0,20,0,0" 
