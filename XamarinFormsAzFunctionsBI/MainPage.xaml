@@ -25,9 +25,7 @@
 
         <StackLayout IsVisible="{Binding DadosPessoais}">
 
-             <Label Text="Xamarin AZFunction BI"  Margin="0,20,0,0"> </Label>
-
-          <Label Text="Dados Pessoais"  > </Label>
+          <Label Text="Dados Pessoais" Margin="0,20,0,0"  > </Label>
 
                  
             <Entry Placeholder="Nome" Margin="0,20,0,0" 
